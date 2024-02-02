@@ -4,6 +4,7 @@
 - DCL(Data Control Language): 특정 사용자에게 데이터 접근 권한 부여(Grant), 제거(Revoke)
 - TCL(Transaction Control Languagae): DML 명렁어를 실행(Commit), 취소(Rollback), 임시 저장(Savepoint)
 
+
 ## 테이블 정의 (DDL)
 테이블은 데이터를 보관하는 틀
 - 행(row)과 열(column)로 이루어진 2차원 표임. Excel의 표를 생각하면 됨
@@ -12,14 +13,12 @@
   - 데이터 형식: 문자, 숫자, 날짜, 논리형으로 분류되며 저장소 크기(바이트)에 따라 종류가 나뉨
   - 각 데이터 형식마다 저장소 크기를 지정하는 이유는 데이터 저장 공간 낭비를 줄이기 위해서
 
-### 데이터베이스 생성
+### 데이터베이스 생성(CREATE SCHEMA)
 CREATE SCHEMA 'sql-tableau' ;
-
 - 스키마 = 데이터베이스
 - 스키마의 이름은 무조건 소문자로 지정됨
 
-
-### 테이블 생성
+### 테이블 생성(CREATE TABLE)
 ```
 -- [회원테이블] 생성
 CREATE TABLE `회원테이블` (
@@ -37,3 +36,37 @@ CREATE TABLE `회원테이블` (
 - MySQL에서는 PK 컬럼은 무조건 NOT NULL을 포함해줘야 함
 - "--"는 주석 처리
 - "```"(백쿼트)는 코드블록 삽입. 앞뒤로 넣어줌
+- 테이블 확인: SELECT * FROM `sql-tableau`.회원테이블;
+
+### 테이블 열 추가(ALTER TABLE ADD)
+```
+ALTER TABLE `회원테이블` ADD `몸무게` FLOAT(24)
+```
+- 열 추가시 반드시 데이터 형식 지정해주어야 함
+
+### 테이블 열 이름 및 형식 변경 (ALTER TABLE CHANGE)
+```
+ALTER TABLE `회원테이블` CHANGE `몸무게` `몸무게(kg)` INT;
+```
+- ALTER TABLE 테이블명 CHANGE 기존컬럼명 변경할컬럼명 컬럼타입;
+- 컬럼 타입만 변경할 경우: ALTER TABLE 테이블명 MODIFY 컬럼명 변경할컬럼타입;
+- 컬럼 순서변경: ALTER TABLE 테이블명 MODIFY 순서변경할컬럼명 컬럼타입 AFTER 앞에오는 컬럼명;
+- 컬럼 디폴트값 변경: ALTER TABLE 테이블명 ALTER COLUMN 변경할컬럼명 SET DEFAULT 디폴트값;
+- 컬럼 삭제: ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
+- 테이블명 변경: ALTER TABLE 기존테이블명 RENAME 바꿀테이블명;
+
+### 데이터 삭제(TRUNCATE) 및 테이블 삭제(DROP)
+-- MEMBER 테이블 모든 행(전체) 데이터 삭제
+```
+TRUNCATE TABLE `MEMBER`;
+```
+-- MEMBER 테이블 자체 삭제
+```
+DROP TABLE MEMBER;
+```
+
+
+## 데이터 조작(DML)
+
+
+
