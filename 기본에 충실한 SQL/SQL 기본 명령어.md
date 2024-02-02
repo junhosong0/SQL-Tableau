@@ -20,6 +20,7 @@ CREATE SCHEMA 'sql-tableau' ;
 
 
 ### 테이블 생성
+```
 -- [회원테이블] 생성
 CREATE TABLE `회원테이블` (
   `회원번호` varchar(20) NOT NULL,
@@ -31,7 +32,8 @@ CREATE TABLE `회원테이블` (
   `수신동의` bit(1) DEFAULT NULL,
   PRIMARY KEY (`회원번호`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
+```
 - 책에서는 가입금액 컬럼의 데이터형식을 MS-SQL의 MONEY형식을 사용했으나 나는 MySQL을 쓰기 때문에 MONEY가 없어 INT로 대체했음.
 - MySQL에서는 PK 컬럼은 무조건 NOT NULL을 포함해줘야 함.
-- "--"는 주석 처
+- "--"는 주석 처리
+- "```"(백쿼트)는 코드블록 삽입. 앞뒤로 넣어줌
