@@ -12,6 +12,7 @@
 - 각 열(column)마다 데이터 형식을 지정해줌. 반드시 1가지 데이터 형식만 저장
   - 데이터 형식: 문자, 숫자, 날짜, 논리형으로 분류되며 저장소 크기(바이트)에 따라 종류가 나뉨
   - 각 데이터 형식마다 저장소 크기를 지정하는 이유는 데이터 저장 공간 낭비를 줄이기 위해서
+  - 테이블이나 컬럼을 다룰때는 백쿼트 ``를 사용하고 그 안에 들어가는 데이터를 다룰때는 따옴표 ''를 사용함
 
 ### 데이터베이스 생성(CREATE SCHEMA)
 CREATE SCHEMA 'sql-tableau' ;
@@ -67,6 +68,50 @@ DROP TABLE MEMBER;
 
 
 ## 데이터 조작(DML)
+DML(Data Manipulation Language)은 데이터를 삽입/조회/수정/삭제하기 위한 명령어
 
+-- member 테이블 생성
+```
+CREATE TABLE `sql-tableau`.`member` (
+  `회원번호` CHAR(20) NOT NULL,
+  `이름` CHAR(20) NULL,
+  `성별` VARCHAR(2) NULL,
+  `나이` INT NULL,
+  `가입금액` INT NULL,
+  `가입일자` DATE NOT NULL,
+  `수신동의` BIT,
+  PRIMARY KEY (`회원번호`));
+```
 
+### 데이터 삽입(INSERT)
+```
+-- 데이터 선택
+SELECT * FROM 'sql-tableau'.'member';
 
+--데이터 입력
+INSERT INTO `sql-tableau`.`member` (`회원번호`, `이름`, `성별`, `나이`, `가입금액`, `가입일자`, `수신동의`) VALUES ('A1001', '모원서', '남', 33, 100000, '2020-01-01', 1);
+INSERT INTO `sql-tableau`.`member` (`회원번호`, `이름`, `성별`, `나이`, `가입금액`, `가입일자`, `수신동의`) VALUES ('A1002', '김영화', '여', 29, 200000, '2020-01-02', 0);
+INSERT INTO `sql-tableau`.`member` (`회원번호`, `이름`, `성별`, `나이`, `가입금액`, `가입일자`, `수신동의`) VALUES ('A1003', '홍길동', '남', 29, 300000, '2020-01-03', NULL);
+```
+
+### 데이터 조회(SELECT)
+-- 모든 열 조회
+```
+SELECT * FROM `MEMBER`;
+```
+- *은 테이블에 있는 모든 열을 조회 함
+  
+-- 특정 열 조회
+```
+SELECT `회원번호`,
+`이름` AS `성명`,
+`가입일자`,
+`나이`
+FROM `MEMBER`;
+```
+- MEMBER 테이블에 특정 컬럼명 조회 및 임시로 컬럼명 변경 (AS)
+
+### 데이터 수정(UPDATE)
+```
+UPDATE `MEMBER` SET `나이` = 30;
+```
