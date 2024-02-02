@@ -107,7 +107,7 @@ SELECT `회원번호`,
 `이름` AS `성명`,
 `가입일자`,
 `나이`
-FROM `MEMBER`;
+FROM MEMBER;
 ```
 - MEMBER 테이블에 특정 컬럼명 조회 및 임시로 컬럼명 변경 (AS)
 
@@ -115,3 +115,23 @@ FROM `MEMBER`;
 ```
 UPDATE `MEMBER` SET `나이` = 30;
 ```
+- 모든 행을 조건 없이, 나이 30으로 수정하기
+
+```
+UPDATE MEMBER SET `나이` = 34 WHERE `회원번호` = 'A1001';
+```
+- 회원번호가 'A1001'인 데이터 행의 나이를 34로 변경하기
+- WHERE는 조건필터 명령어
+
+### 데이터 삭제(DELETE)
+```
+DELETE FROM MEMBER WHERE `회원번호` = 'A1001';
+```
+- 회원테이블의 회원번호가 A1001인 행데이터 삭제
+- DELETE: 데이터만 삭제
+- TRUNCATE: 데이터+테이블 공간 삭제
+- DROP: 테이블 전체 삭제
+  
+
+  
+  
