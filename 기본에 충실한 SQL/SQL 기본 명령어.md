@@ -133,5 +133,7 @@ DELETE FROM MEMBER WHERE `회원번호` = 'A1001';
 - DROP: 테이블 전체 삭제
   
 
-  
-  
+## 데이터 접근 제어 (DCL)
+
+
+## 명령어 제어 (TCL)
