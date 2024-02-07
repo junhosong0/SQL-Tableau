@@ -11,4 +11,6 @@ SQL로 분석하고 Tableau로 시각화 책을 공부하며 프로젝트 형식
 
 ## DB엔진
 
-책에서는 MS-SQL을 기준으로 설명하지만 나는 전 세계적으로 점유율이 더 높은 MYSQL을 사용할 예정.
+책에서는 MS-SQL을 기준으로 설명하지만 나는 전 세계적으로 점유율이 더 높은 MYSQL을 사용할 예정. 책에서 나오는 SQL파트는 해당 프로젝트에서 MySQL을 사용한 관계로 MySQL 레파지토리 참조. 다만, SQL과 파이썬연동 및 태블로와 SQL 활용 등은 현재 레파지토리에 포함 됨.
+
+- MySQL 레파지토리: https://github.com/junhosong0/MySQL
